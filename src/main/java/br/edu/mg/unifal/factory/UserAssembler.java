@@ -30,7 +30,7 @@ public class UserAssembler {
                 User.builder()
                         .firstName("Helen")
                         .lastName("Connolly")
-                        .gender(Gender.FEMALE)
+                        .gender(Gender.PREFER_NOT_SAY)
                         .birthdate(LocalDateTime.of(1990, 8, 21, 0, 0, 0))
                         .address(Address.builder()
                                 .streetName("Stevie Estate")

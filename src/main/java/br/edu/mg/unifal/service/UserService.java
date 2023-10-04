@@ -4,6 +4,12 @@ import br.edu.mg.unifal.domain.User;
 import br.edu.mg.unifal.enumerator.Gender;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.Locale;
+import java.util.UUID;
+import java.util.function.*;
+
 @NoArgsConstructor
 public class UserService {
 
@@ -18,6 +24,10 @@ public class UserService {
         return Gender.MALE.equals(user.getGender());
     }
     // Using Predicate (Java 8)
+    public Predicate<User> isMale = user -> Gender.MALE.equals(user.getGender());
+
+    public Predicate<User> isPreferNotSay = user -> Gender.PREFER_NOT_SAY.equals(user.getGender());
+
 
 
     /* ------------------------------------ ## ------------------------------------ */
@@ -33,6 +43,8 @@ public class UserService {
 
     // Using Consumer (Java 8)
 
+    public Consumer<User> printUser = user -> System.out.println(user.toString());
+
 
     /* ------------------------------------ ## ------------------------------------ */
 
@@ -46,6 +58,14 @@ public class UserService {
     // Using traditional Java
 
     // Using Supplier (Java 8)
+    
+    
+    public Supplier<UUID> getUUID = UUID::randomUUID;
+    public Supplier<LocalDate> getDate = LocalDate::now;
+    
+    
+    
+    
 
 
     /* ------------------------------------ ## ------------------------------------ */
@@ -60,8 +80,7 @@ public class UserService {
 
     // Using Function (Java 8)
 
-
-
+    public Function<User,Integer> getUserAge = user -> Period.between(user.getBirthdate().toLocalDate(),LocalDate.now()).getYears();
     /* ------------------------------------ ## ------------------------------------ */
 
     /*
